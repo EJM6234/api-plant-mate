@@ -1,0 +1,21 @@
+{
+  "name": "plant-mate-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.9.7",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.5.8",
+    "graphql-relay": "^0.6.0",
+    "graphql-sequelize": "^9.3.6",
+    "morgan": "~1.9.1",
+    "node-sass-middleware": "0.11.0",
+    "postgraphql": "^3.5.6"
+  }
+}
