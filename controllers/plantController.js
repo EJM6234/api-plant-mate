@@ -9,6 +9,10 @@ const getAllPlants = async (req, res) => {
   }
 };
 
+const health = async (req, res) => {
+  return res.status(200).send('All systems go');
+};
+
 const getPlantById = async (req, res) => {
   try {
     const plant = await plantService.getPlantById(req.params.id);
@@ -61,4 +65,5 @@ module.exports = {
   // updatePlants,
   updatePlant,
   deletePlant,
+  health
 };
