@@ -2,31 +2,31 @@ const { gql } = require('apollo-server-express');
 
 module.exports.typeDefs = gql`
     type Plant {
-        id: ID!,
+        id: Int!,
         name: String!,
         waterSensorId: Int,
-        isWatered: Boolean!
-        autoWatering: Boolean!
+        isWatered: Boolean
+        autoWatering: Boolean
     }
     
     type WaterSensor {
-        id: ID!,
+        id: Int!,
         number: Int!,
         plantId: Int
     }
     
     type Query {
         plants: [Plant],
-        plant(id: ID!): Plant,
+        plant(id: Int!): Plant,
         waterSensors: [WaterSensor],
-        waterSensor(id: ID!): WaterSensor
+        waterSensor(id: Int!): WaterSensor
     }
 
     type Mutation {
         createPlant(name: String! waterSensorId: Int): Plant!,
-        deletePlant(id: ID!): Plant!,
+        deletePlant(id: Int!): Int!,
         createWaterSensor(number: Int!, plantId: Int): WaterSensor!,
-        deleteWaterSensor(id: ID!): WaterSensor!
+        deleteWaterSensor(id: Int!): WaterSensor!
     }
 `;
 

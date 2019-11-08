@@ -43,6 +43,7 @@ const updatePlant = async (id, body) => {
 const deletePlant = async (id) => {
   try {
     await plantRepository.deletePlant(id);
+    return id;
   } catch(err) {
     throw err;
   }

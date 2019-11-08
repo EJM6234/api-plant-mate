@@ -10,7 +10,10 @@ module.exports = {
       logging: console.log,
     },
     production: {
-      use_env_variable: "",
-      dialect: ""
+      username: "postgres",
+      password: config.dbPassword,
+      database: "plantmate-db",
+      host: "plantmate-db.celjfwvtv2e1.us-east-1.rds.amazonaws.com",
+      dialect: "postgres",
     }
 };
