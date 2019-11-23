@@ -16,9 +16,9 @@ const getPlantById = async (id) => {
   }
 };
 
-const createPlant = async (name, waterSensorId) => {
+const createPlant = async (name, isWatered, autoWatering) => {
   try {
-    return await plantRepository.createPlant(name, waterSensorId);
+    return await plantRepository.createPlant(name, isWatered, autoWatering);
   } catch(err) {
     throw err;
   }

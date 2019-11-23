@@ -4,9 +4,9 @@ module.exports.typeDefs = gql`
     type Plant {
         id: Int!,
         name: String!,
-        waterSensorId: Int,
-        isWatered: Boolean
-        autoWatering: Boolean
+        isWatered: Boolean,
+        autoWatering: Boolean,
+        waterSensor: WaterSensor
     }
     
     type WaterSensor {
@@ -24,8 +24,10 @@ module.exports.typeDefs = gql`
 
     type Mutation {
         createPlant(name: String! waterSensorId: Int): Plant!,
+        updatePlant(id: Int!, name: String, isWatered: Boolean, autoWatering: Boolean): Plant!,
         deletePlant(id: Int!): Int!,
         createWaterSensor(number: Int!, plantId: Int): WaterSensor!,
+        updateWaterSensor(id: Int!, plantId: Int): WaterSensor!,
         deleteWaterSensor(id: Int!): WaterSensor!
     }
 `;

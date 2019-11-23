@@ -5,11 +5,13 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       unique: true,
     },
-    is_watered: {
+    isWatered: {
+      field: 'is_watered',
       type: Sequelize.BOOLEAN,
       defaultValue: false,
     },
-    auto_watering: {
+    autoWatering: {
+      field: 'auto_watering',
       type: Sequelize.BOOLEAN,
       defaultValue: false,
     }

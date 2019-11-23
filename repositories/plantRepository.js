@@ -20,11 +20,12 @@ const getPlantById = async (id) => {
   }
 };
 
-const createPlant = async (name, waterSensorId) => {
+const createPlant = async (name, isWatered, autoWatering) => {
   try {
     return await db.Plant.create({
       name,
-      waterSensorId
+      isWatered,
+      autoWatering
     });
   } catch(err) {
     throw err;
@@ -41,11 +42,12 @@ const createPlant = async (name, waterSensorId) => {
 
 const updatePlant = async (id, body) => {
   try {
-    return await db.Plant.update(body, {
+    const result = await db.Plant.update(body, {
       where: {
         id,
       }
     });
+    return result[1][0].dataValues;
   } catch(err) {
     throw err;
   }

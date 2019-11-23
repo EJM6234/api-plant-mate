@@ -5,7 +5,8 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
             unique: true,
         },
-        plant_id: {
+        plantId: {
+            field: 'plant_id',
             type: Sequelize.INTEGER,
             allowNull: true
         }

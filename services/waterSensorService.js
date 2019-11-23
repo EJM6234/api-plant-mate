@@ -16,6 +16,14 @@ const getWaterSensorById = async (id) => {
     }
 };
 
+const getWaterSensorByPlantId = async (plantId) => {
+    try {
+        return await waterSensorRepository.getWaterSensorByPlantId(plantId);
+    } catch(err) {
+        throw err;
+    }
+};
+
 const createWaterSensor = async (number, plantId) => {
     try {
         return await waterSensorRepository.createWaterSensor(number, plantId);
@@ -24,17 +32,11 @@ const createWaterSensor = async (number, plantId) => {
     }
 };
 
-// const updateWaterSensors = async (body) => {
-//   try {
-//     return await waterSensorRepository.updateWaterSensors(body);
-//   } catch(err) {
-//     throw err;
-//   }
-// };
-
-const updateWaterSensor = async (id, body) => {
+const updateWaterSensor = async (id, plantId) => {
     try {
-        return await waterSensorRepository.updateWaterSensor(id, body);
+        const previousSensor = await waterSensorRepository.getWaterSensorByPlantId(plantId);
+        if (previousSensor) await waterSensorRepository.updateWaterSensor(previousSensor.id, null);
+        return await waterSensorRepository.updateWaterSensor(id, plantId);
     } catch(err) {
         throw err;
     }
@@ -51,8 +53,8 @@ const deleteWaterSensor = async (id) => {
 module.exports = {
     getAllWaterSensors,
     getWaterSensorById,
+    getWaterSensorByPlantId,
     createWaterSensor,
-    // updateWaterSensors,
     updateWaterSensor,
     deleteWaterSensor,
 };

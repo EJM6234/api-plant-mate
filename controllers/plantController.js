@@ -24,7 +24,7 @@ const getPlantById = async (req, res) => {
 
 const createPlant = async (req, res) => {
   try {
-    const plant = await plantService.createPlant(req.body.name, req.body.waterSensorId);
+    const plant = await plantService.createPlant(req.body.name, req.body.isWatered, req.body.autoWatering);
     return res.status(201).json(plant);
   } catch(err) {
     res.status(500).send(err.message);
@@ -42,7 +42,7 @@ const createPlant = async (req, res) => {
 
 const updatePlant = async (req, res) => {
   try {
-    await plantService.updatePlants(req.body);
+    await plantService.updatePlants(req.params.id, req.body);
     return res.sendStatus(200);
   } catch(err) {
     res.status(500).send(err.message);

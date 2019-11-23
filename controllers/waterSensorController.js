@@ -18,6 +18,15 @@ const getWaterSensorById = async (req, res) => {
     }
 };
 
+const getWaterSensorByPlantId = async (req, res) => {
+    try {
+        const waterSensors = await waterSensorService.getWaterSensorByPlantId(req.params.plantId);
+        return res.status(200).json(waterSensors);
+    } catch(err) {
+        res.status(500).send(err.message);
+    }
+};
+
 const createWaterSensor = async (req, res) => {
     try {
         const waterSensor = await waterSensorService.createWaterSensor(req.body.number, req.body.plantId);
@@ -27,18 +36,9 @@ const createWaterSensor = async (req, res) => {
     }
 };
 
-// const updateWaterSensors = async (req, res) => {
-//   try {
-//     await waterSensorService.updateWaterSensors(req.body);
-//     return res.sendStatus(200);
-//   } catch(err) {
-//     res.status(500).send(err.message);
-//   }
-// };
-
 const updateWaterSensor = async (req, res) => {
     try {
-        await waterSensorService.updateWaterSensors(req.body);
+        await waterSensorService.updateWaterSensor(req.params.id, req.body.plantId);
         return res.sendStatus(200);
     } catch(err) {
         res.status(500).send(err.message);
@@ -57,8 +57,8 @@ const deleteWaterSensor = async (req, res) => {
 module.exports = {
     getAllWaterSensors,
     getWaterSensorById,
+    getWaterSensorByPlantId,
     createWaterSensor,
-    // updateWaterSensors,
     updateWaterSensor,
     deleteWaterSensor,
 };
