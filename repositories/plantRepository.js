@@ -32,20 +32,15 @@ const createPlant = async (name, isWatered, autoWatering) => {
   }
 };
 
-// const updatePlants = async (body) => {
-//   try {
-//     return await db.Plant.update(body);
-//   } catch(err) {
-//     throw err;
-//   }
-// };
-
-const updatePlant = async (id, body) => {
+const updatePlant = async (id, name, isWatered, autoWatering) => {
   try {
-    const result = await db.Plant.update(body, {
-      where: {
-        id,
-      }
+    const result = await db.Plant.update({
+      name,
+      isWatered,
+      autoWatering
+    }, {
+      where: { id },
+      returning: true
     });
     return result[1][0].dataValues;
   } catch(err) {
@@ -69,7 +64,6 @@ module.exports = {
   getAllPlants,
   getPlantById,
   createPlant,
-  // updatePlants,
   updatePlant,
   deletePlant,
 };

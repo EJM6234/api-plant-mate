@@ -24,17 +24,9 @@ const createPlant = async (name, isWatered, autoWatering) => {
   }
 };
 
-// const updatePlants = async (body) => {
-//   try {
-//     return await plantRepository.updatePlants(body);
-//   } catch(err) {
-//     throw err;
-//   }
-// };
-
-const updatePlant = async (id, body) => {
+const updatePlant = async (id, name, isWatered, autoWatering) => {
   try {
-    return await plantRepository.updatePlant(id, body);
+    return await plantRepository.updatePlant(id, name, isWatered, autoWatering);
   } catch(err) {
     throw err;
   }
@@ -53,7 +45,6 @@ module.exports = {
   getAllPlants,
   getPlantById,
   createPlant,
-  // updatePlants,
   updatePlant,
   deletePlant,
 };
