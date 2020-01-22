@@ -9,7 +9,7 @@ node('master') {
 }
 
 pipeline {
-  agent { docker { image 'node:10.16' } }
+  agent { docker { image 'ubuntu:latest' } }
 
   environment {
     AWS_DEFAULT_REGION="${AWS_REGION}"
