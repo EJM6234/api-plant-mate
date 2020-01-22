@@ -9,7 +9,7 @@ node('master') {
 }
 
 pipeline {
-  agent { label "AWS-PLANTMATE-DEV && REGION-us-east-1 && docker && linux && terraform" }
+  agent { docker { image 'node:10.16' } }
 
   environment {
     AWS_DEFAULT_REGION="${AWS_REGION}"
