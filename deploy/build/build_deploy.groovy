@@ -13,10 +13,13 @@ pipeline {
 
   environment {
     AWS_DEFAULT_REGION="${AWS_REGION}"
-    ECR_HOST =
   }
 
   stages {
-
+    stage('Setting up environment') {
+      steps {
+        sh 'echo BUILDING'
+      }
+    }
   }
 }
